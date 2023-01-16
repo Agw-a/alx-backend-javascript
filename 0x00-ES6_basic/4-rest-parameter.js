@@ -1,3 +1,3 @@
 export default function returnHowManyArguments(...argsTurn) {
-    return argsTurn.length;
+  return argsTurn.length;
 }
