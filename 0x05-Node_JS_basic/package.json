@@ -4,7 +4,7 @@
   "description": "noje-js-basic",
   "main": "0-console.js",
   "scripts": {
-    "lint": "eslint",	  
+    "lint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,7 +12,14 @@
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
+    "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
     "eslint": "^8.34.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
   }
 }
