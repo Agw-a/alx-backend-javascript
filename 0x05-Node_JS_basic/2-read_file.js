@@ -1,19 +1,41 @@
-const fs = require('fs')
+const fs = require('fs');
 
-/**
- * param {String} filePath -> path
- */
-const countStudents = (filePath) => {
-    if (!fs.existsSync(filePath)) {
-        throw new Error('Cannot load the database')
+const countStudents = (file_path) => {
+    if (!fs.existsSync(file_path)) {
+      throw new Error('Cannot load the database');
     }
-    if (!fs.statSync(filePath).isFile()) {
-        throw new Error('Cannot load the database')
+    if (!fs.statSync(file_path).isFile()) {
+      throw new Error('Cannot load the database');
     }
-    const readLines = fs.readFileSync(filePath, 'utf-8').toString('utf-8').trim().split('\n')
-    const stdts = {};
-    const names = readLines[0].split(',');
-    const stdNames = names.slice(0, names.length)
-}
-
+    const dataFile = fs
+      .readFileSync(file_path, 'utf-8')
+      .toString('utf-8')
+      .trim()
+      .split('\n');
+    const hash = {};
+    const hash_names = dataFile[0].split(',');
+    const student_names = hash_names.slice(0, hash_names.length - 1);
+  
+    for (const line of dataFile.slice(1)) {
+      const hash_records = line.split(',');
+      const student_values = hash_records.slice(0, hash_records.length - 1);
+      const field = hash_records[hash_records.length - 1];
+      if (!Object.keys(hash).includes(field)) {
+        hash[field] = [];
+      }
+      const hash_entries = student_names
+        .map((propName, idx) => [propName, student_values[idx]]);
+      hash[field].push(Object.fromEntries(hash_entries));
+    }
+  
+    const total_students = Object
+      .values(hash)
+      .reduce((pre, cur) => (pre || []).length + cur.length);
+    console.log(`Number of students: ${total_students}`);
+    for (const [field, group] of Object.entries(hash)) {
+      const studentNames = group.map((student) => student.firstname).join(', ');
+      console.log(`Number of students in ${field}: ${group.length}. List: ${studentNames}`);
+    }
+  };
+  
 module.exports = countStudents;
