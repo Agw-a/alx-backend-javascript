@@ -1,0 +1,18 @@
+{
+  "name": "0x05-node_js_basic",
+  "version": "1.0.0",
+  "description": "noje-js-basic",
+  "main": "0-console.js",
+  "scripts": {
+    "lint": "eslint",	  
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "eslint": "^8.34.0"
+  }
+}
