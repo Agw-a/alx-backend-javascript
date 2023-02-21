@@ -13,7 +13,7 @@ app.on((req, response) => {
 });
 
 app.listen(listen_port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${listen_port}/`)
+    console.log(`Server running at http://${hostname}:${listen_port}\n`)
 })
 
 module.exports = app;
